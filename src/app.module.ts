@@ -3,6 +3,8 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { PostsController } from './posts/posts.controller';
+import { PostsService } from './posts/posts.service';
+import { PostsModule } from './posts/posts.module'
 
 @Module({
   imports: [
@@ -16,8 +18,9 @@ import { PostsController } from './posts/posts.controller';
       entities: [Post],
       synchronize: true,
     }),
+    PostsModule
   ],
   controllers: [AppController, PostsController],
-  providers: [AppService],
+  providers: [AppService, PostsService],
 })
 export class AppModule {}
