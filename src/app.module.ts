@@ -1,10 +1,9 @@
-import { Module, Post } from '@nestjs/common';
+import { Module} from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { PostsController } from './posts/posts.controller';
-import { PostsService } from './posts/posts.service';
-import { PostsModule } from './posts/posts.module'
+import { PostsModule } from './posts/posts.module';
+import { Post } from './posts/post.entity'
 
 @Module({
   imports: [
@@ -20,7 +19,7 @@ import { PostsModule } from './posts/posts.module'
     }),
     PostsModule
   ],
-  controllers: [AppController, PostsController],
-  providers: [AppService, PostsService],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}
