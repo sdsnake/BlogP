@@ -1,4 +1,6 @@
-import {Entity, PrimaryGeneratedColumn, Column} from "typeorm";
+import {Entity, PrimaryGeneratedColumn, Column, ManyToOne} from "typeorm";
+import { type } from "os";
+import { Post } from "../posts/post.entity";
 
 @Entity()
 export class Comment {
@@ -14,5 +16,8 @@ export class Comment {
 
     @Column("date")
     date: string;
+
+    @ManyToOne(type=> Post, post => post.comments)
+    post: Post;
 
 }
